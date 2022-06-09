@@ -98,4 +98,4 @@ stages:
               "type": "SqlAzure",
               "slotSetting": false
             }
-          ]'
+          ]
