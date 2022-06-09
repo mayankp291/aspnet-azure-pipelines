@@ -71,12 +71,14 @@ stages:
     pool: 
       vmImage: 'windows-latest'
     steps:
-    - task: DownloadBuildArtifacts@1
+
+    - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'current'
         downloadType: 'single'
         artifactName: 'drop'
         downloadPath: '$(System.DefaultWorkingDirectory)'
+
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
@@ -84,7 +86,7 @@ stages:
         appType: 'webApp'
         WebAppName: '$(WEBAPPNAME)'
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    
+
     - task: AzureAppServiceSettings@1
       inputs:
         azureSubscription: 'Azure for Students(c2a69b6e-6fa4-4ad1-af71-8b6d8419cafd)'
